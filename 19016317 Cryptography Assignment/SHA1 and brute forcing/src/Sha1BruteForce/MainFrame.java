@@ -301,8 +301,8 @@ Cracked in: 771245799 ns
 
 public boolean pwdCrackedSha = false;
 //Uncomment and comment to choose char set for set_A
-ArrayList<String> SHA_ACharSet = new ArrayList<String>(Arrays.asList("a","b", "c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"));
-//ArrayList<String> SHA_ACharSet = new ArrayList<String>(Arrays.asList("0","1","2","3","4","5","6","7","8","9"));
+//ArrayList<String> SHA_ACharSet = new ArrayList<String>(Arrays.asList("a","b", "c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"));
+ArrayList<String> SHA_ACharSet = new ArrayList<String>(Arrays.asList("0","1","2","3","4","5","6","7","8","9"));
 
 /*
 This function is use to brute force alphanumeric passwords
@@ -462,7 +462,7 @@ returns void
     
         long startTime = System.nanoTime();// Used to record time of completion
         pwdCrackedSha = false;
-        int passwordLen = 7;
+        int passwordLen = 9;
         for(int i = 0; i < passwordLen; i++){//Loops to generate passwords up to a password size of 7 
             if(pwdCrackedSha == false){// Checks to see if password has been cracked yet
                 try {
