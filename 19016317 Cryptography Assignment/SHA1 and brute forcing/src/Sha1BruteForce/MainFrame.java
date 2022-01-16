@@ -260,7 +260,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     //Function clears text boxes
     private void clearText_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearText_btnActionPerformed
         pwdLen_txt.setText("");
