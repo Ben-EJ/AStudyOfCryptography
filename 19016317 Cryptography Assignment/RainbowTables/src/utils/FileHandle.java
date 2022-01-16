@@ -21,27 +21,26 @@ import java.util.Scanner;
  *
  * @author benja
  */
-
 //File handling functions
 public class FileHandle {
-    
+
     /*
     Writes rainbow table to file
     Takes rainbow table as a parameter
     returns void
-    */
-    public static void writeRainbowToFile(LinkedHashMap<String,String> rainbowTable){
-        
-        try(PrintWriter writer = new PrintWriter("RainbowTable.csv")) {
-            
-            for (Map.Entry<String, String> set :
-                rainbowTable.entrySet()) {
+     */
+    public static void writeRainbowToFile(LinkedHashMap<String, String> rainbowTable) {
+
+        try (PrintWriter writer = new PrintWriter("RainbowTable.csv")) {
+
+            for (Map.Entry<String, String> set
+                    : rainbowTable.entrySet()) {
                 StringBuilder chainData = new StringBuilder();
-                    chainData.append(set.getKey());
-                    chainData.append(",");
-                    chainData.append(set.getValue());
-                    chainData.append("\n");
-                    writer.write(chainData.toString());
+                chainData.append(set.getKey());
+                chainData.append(",");
+                chainData.append(set.getValue());
+                chainData.append("\n");
+                writer.write(chainData.toString());
             }
             writer.close();
             System.out.println("Wrote to rainbow table to file");
@@ -49,32 +48,34 @@ public class FileHandle {
             System.out.println("File not found: " + e);
         }
     }
+
     /*
     Pulls rainbow table from file
     Takes no parameters
     returns the rainbow table as a LinkedHashMap<String,String>
-    */
-    public static LinkedHashMap<String,String> readRainbowFile() throws FileNotFoundException, IOException{
-        LinkedHashMap<String,String> rainbowTable = new LinkedHashMap<String,String>();
+     */
+    public static LinkedHashMap<String, String> readRainbowFile() throws FileNotFoundException, IOException {
+        LinkedHashMap<String, String> rainbowTable = new LinkedHashMap<String, String>();
         int count = 0;
         try (BufferedReader br = new BufferedReader(new FileReader("RainbowTable.csv"))) {
             String line;
-        
-        while ((line = br.readLine()) != null) {
-            String[] values = line.split(",");
-            count++;
-            rainbowTable.put(values[0],values[1]); 
-            //System.out.println(count);
+
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                count++;
+                rainbowTable.put(values[0], values[1]);
+                //System.out.println(count);
+            }
+            return rainbowTable;
         }
-        return rainbowTable;
     }
-    }
+
     /*
     Writes rainbow table configs to file
     Takes chainSize, passwordLen and charSetUsed as parameters
     returns void
-    */
-    public static void writeConfigFile(int chainSize, int passwordLen, int charSetUsed, int ammountOfChains){
+     */
+    public static void writeConfigFile(int chainSize, int passwordLen, int charSetUsed, int ammountOfChains) {
         try {
             FileWriter myWriter = new FileWriter("configs.txt");
             myWriter.write(Integer.toString(chainSize) + System.getProperty("line.separator"));
@@ -88,28 +89,29 @@ public class FileHandle {
             e.printStackTrace();
         }
     }
+
     /*
     Pulls rainbow table configurations from file
     Takes no parameters
     returns the rainbow table configs as a ArrayList<String>
-    */
-    public static ArrayList<String> readConfigFile() throws FileNotFoundException, IOException{
+     */
+    public static ArrayList<String> readConfigFile() throws FileNotFoundException, IOException {
         ArrayList<String> configs = new ArrayList<String>();
         int count = 0;
         try {
             File myFile = new File("configs.txt");
-            Scanner myReader = new Scanner(myFile);  
+            Scanner myReader = new Scanner(myFile);
             while (myReader.hasNextLine()) {
                 String value = myReader.nextLine();
-                
+
                 configs.add(value);
             }
-        myReader.close();
+            myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("Cant read Config File");
             e.printStackTrace();
-        } 
-        return configs;    
+        }
+        return configs;
     }
-    
+
 }
