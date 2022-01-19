@@ -161,12 +161,12 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Generate 4 digits of BCH"/>
+        <Property name="text" type="java.lang.String" value="Generate 4 digits of BCH (10,6)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Calculate Errors in BCH"/>
+        <Property name="text" type="java.lang.String" value="Calculate Errors in BCH  (10,6)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
